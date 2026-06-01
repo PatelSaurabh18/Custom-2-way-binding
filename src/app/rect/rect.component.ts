@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, model, Output } from '@angular/core';
 
 @Component({
   selector: 'app-rect',
@@ -10,14 +10,25 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class RectComponent {
   // Todo: Implement custom two-way binding
 
-  @Input({required:true})  size!: {width:string;height:string};
-  @Output() sizeChange = new EventEmitter<{width:string;height:string}>();
+  // @Input({required:true})  size!: {width:string;height:string};
+  // @Output() sizeChange = new EventEmitter<{width:string;height:string}>();
+  /*
+    Old way of 2 way binding with input & output decorators angular < 16
+  */
+
+  size = model<{width:string;height:string}>();
+  /*
+    New way of 2 way binding with signal angular >= 16
+  */
   
   onReset() {
-    // ...
-    this.sizeChange.emit({
-      width:'200',
-      height:'100'
-    })
+    // this.sizeChange.emit({
+    //   width:'200',
+    //   height:'100'
+    // })
+   this.size.set({
+    width:'200',
+    height:'100'
+   });
   };
 }
