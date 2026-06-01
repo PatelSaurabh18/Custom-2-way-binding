@@ -16,7 +16,7 @@ export class RectComponent {
     Old way of 2 way binding with input & output decorators angular < 16
   */
 
-  size = model<{width:string;height:string}>();
+  size = model.required<{width:string;height:string}>();
   /*
     New way of 2 way binding with signal angular >= 16
   */

@@ -12,5 +12,5 @@ export class AppComponent {
   rectSize = {
     width: '100',
     height: '100',
-  };
+  };  
 }
